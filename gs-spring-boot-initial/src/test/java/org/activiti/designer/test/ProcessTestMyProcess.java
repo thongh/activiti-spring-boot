@@ -15,7 +15,7 @@ import org.junit.Test;
 
 public class ProcessTestMyProcess {
 
-	private String filename = "F:/My Work/Generalli/STS/STS Workspace/gs-spring-boot-initial/src/main/resources/diagrams/CustomerComplaintProcess.bpmn";
+	private String filename = "F:/My Work/Generalli/git repo/activiti-spring-boot/gs-spring-boot-initial/src/main/resources/diagrams/CustomerComplaintProcess.bpmn";
 
 	@Rule
 	public ActivitiRule activitiRule = new ActivitiRule();
