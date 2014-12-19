@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>
+        Photo Approval
+    </title>
+
+</head>
+<body>
+ 
+<h1>Complaint Approval</h1>
+
+<div th:unless="${task == null}">
+    <form method="post" action="/approve">
+
+        <div th:each="photo : ${photos}">
+            <img width="300" th:src="@{|/image/${photo.id}|}"/>
+        </div>
+
+        <input type="hidden" name="taskId" th:value="${task.id}"/>
+
+
+		<h5>Do you approve?</h5>
+        <input type="submit" name="approved" value="true"/>
+        <input type="submit" name="approved" value="false"/>
+    </form>
+</div>
+<div th:if="${task == null}">
+    No pending tasks...
+</div>
+</body>
+</html>

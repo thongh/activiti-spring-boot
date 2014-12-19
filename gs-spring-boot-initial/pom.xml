@@ -5,7 +5,11 @@
 
 	<groupId>org.springframework</groupId>
 	<artifactId>gs-spring-boot</artifactId>
-	<version>0.1.0</version>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>customer complaint process demo</name>
+	<description>customer complaint process demo with activiti and spring</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -14,38 +18,54 @@
 	</parent>
 
 	<dependencies>
-		<!-- tag::jetty[] -->
+
+		<!-- tag::h2[] -->
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-starter-tomcat</artifactId>
-				</exclusion>
-			</exclusions>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.4.182</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-jetty</artifactId>
+			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
-		<!-- end::jetty[] -->
-
-		<!-- tag::actuator[] -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.activiti</groupId>
+			<artifactId>spring-boot-starter-basic</artifactId>
+			<version>${activiti.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.activiti</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
+			<version>${activiti.version}</version>
 		</dependency>
-		<!-- end::actuator[] -->
-
-		<!-- tag::junit[] -->
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.11</version>
+			<groupId>org.activiti</groupId>
+			<artifactId>spring-boot-starter-integration</artifactId>
+			<version>${activiti.version}</version>
 		</dependency>
-		<!-- end::junit[] -->
+		<dependency>
+			<groupId>org.activiti</groupId>
+			<artifactId>spring-boot-starter-jpa</artifactId>
+			<version>${activiti.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.activiti</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+			<version>${activiti.version}</version>
+		</dependency>
+
+
 
 		<!-- tag::org apache commons[] -->
 		<dependency>
@@ -71,15 +91,45 @@
 			<version>2.6</version>
 		</dependency>
 
-		<!-- tag::h2[] -->
+		<!-- LOG -->
 		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<version>1.4.182</version>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.7</version>
 		</dependency>
 
 
-		<!-- ACTIVITI -->
+
+		<!-- tag::jetty[] 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jetty</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+		</dependency>
+
+
 		<dependency>
 			<groupId>org.activiti</groupId>
 			<artifactId>activiti-engine</artifactId>
@@ -210,17 +260,17 @@
 			<groupId>org.activiti</groupId>
 			<artifactId>activiti-mule</artifactId>
 			<version>5.16.4</version>
-		</dependency>
-
-	
-
-
+		</dependency> -->
 
 
 	</dependencies>
 
+
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<start-class>hello.Application</start-class>
+		<java.version>1.8</java.version>
+		<activiti.version>5.17.0-SNAPSHOT</activiti.version>
 	</properties>
 
 	<build>
